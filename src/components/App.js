@@ -30,15 +30,18 @@ class App extends Component {
   }
 
   handleSearch(query, page) {
+    let url = `https://api.themoviedb.org/3/movie/popular?api_key=5b19221d20b929615d236692cea743e4&language=en-US&page=${page}`;
+    if (query) {
+      url = `https://api.themoviedb.org/3/search/movie?api_key=5b19221d20b929615d236692cea743e4&language=en-US&page=${page}&query=${query}&include_adult=false`;
+    }
     this.setState({ isNewQuery: true, queryString: query });
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=5b19221d20b929615d236692cea743e4&language=en-US&page=${page}&query=${query}&include_adult=false`)
+    fetch(url)
       .then(res => res.json())
       .then(movies => this.setState({ movies }));
   }
 
   handlePageClick(data) {
     const selected = data.selected + 1;
-    console.log('AAA', selected);
     const { isNewQuery, queryString } = this.state;
     if (isNewQuery) {
       this.handleSearch(queryString, selected);
