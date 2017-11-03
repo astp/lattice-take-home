@@ -3,7 +3,7 @@
 
 To get this app up and running locally:
 
-1. `git clone https://github.com/astp/search-movie.git`
+1. `git clone https://github.com/astp/lattice-take-home`
 2. `cd` into app
 3. `npm install` to install all dependencies
 4. `npm start` to get a simple server up and running
