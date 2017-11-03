@@ -14,7 +14,6 @@ class App extends Component {
     this.state = {
       movies: [],
       isNewQuery: false,
-      currentPage: 1,
       queryString: '',
     };
   }
@@ -22,30 +21,29 @@ class App extends Component {
     this.getMovies();
   }
 
-  getMovies() {
-    const { currentPage } = this.state;
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=5b19221d20b929615d236692cea743e4&language=en-US&page=${currentPage}`)
+  getMovies(page) {
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=5b19221d20b929615d236692cea743e4&language=en-US&page=${page}`)
       .then(res => res.json())
       .then((movies) => {
         this.setState({ movies });
       });
   }
 
-  handleSearch(query) {
+  handleSearch(query, page) {
     this.setState({ isNewQuery: true, queryString: query });
-    const { currentPage } = this.state;
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=5b19221d20b929615d236692cea743e4&language=en-US&page=${currentPage}&query=${query}&include_adult=false`)
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=5b19221d20b929615d236692cea743e4&language=en-US&page=${page}&query=${query}&include_adult=false`)
       .then(res => res.json())
       .then(movies => this.setState({ movies }));
   }
 
   handlePageClick(data) {
     const selected = data.selected + 1;
+    console.log('AAA', selected);
     const { isNewQuery, queryString } = this.state;
-    this.setState({ currentPage: selected });
     if (isNewQuery) {
-      this.handleSearch(queryString);
-      this.getMovies();
+      this.handleSearch(queryString, selected);
+    } else {
+      this.getMovies(selected);
     }
   }
 
