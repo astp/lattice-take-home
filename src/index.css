@@ -1,0 +1,50 @@
+.card-image {
+  background: url("image.png") no-repeat center;
+  min-height: 391.83px;
+  min-width: 260.75px;
+
+}
+.column {
+  min-height: 511.98px;
+  min-width: 288.75px;
+}
+.four.column.row .column {
+  margin-bottom: 20px;
+}
+
+.vote-average {
+  align-items: center;
+  display: inline-flex;
+  margin-right: 0;
+  padding-top: 0;
+}
+
+.left.aligned.content .header {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 240px;
+  white-space: nowrap;
+}
+
+h4 {
+  color: gray;
+}
+.ui.stackable.menu {
+  background-color: black;
+}
+
+ul.pagination {
+  bottom: 20px;
+  list-style: none;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+ul.pagination li {
+  display: inline-block;
+  list-style: none;
+  margin: 20px;
+}
+a[aria-current] {
+  color: black;
+}
