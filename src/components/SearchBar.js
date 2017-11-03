@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 
 class Search extends React.Component {
@@ -17,5 +18,9 @@ class Search extends React.Component {
     );
   }
 }
+
+Search.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};
 
 export default Search;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid, Image, Card, Icon } from 'semantic-ui-react';
 import image from '../image.png';
 
@@ -35,5 +36,16 @@ const MoviesContainer = ({ movies }) => (
     </Grid.Row>
   </Grid>
 );
+
+MoviesContainer.propTypes = {
+  movies: PropTypes.shape({
+    results: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      vote_average: PropTypes.number,
+      title: PropTypes.string,
+      release_date: PropTypes.string,
+    })),
+  }).isRequired,
+};
 
 export default MoviesContainer;
